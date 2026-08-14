@@ -1,7 +1,7 @@
 name: XT-Bot
 
 on:
-  workflow_dispatch:      # 允许手动触发
+  workflow_dispatch:      # ??????
   schedule:
     - cron: '0 2 * * *'  # UTC 02:00 = Beijing 10:00
 
@@ -14,7 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GH_TOKEN }}  # 使用你设置的 secret
+          token: ${{ secrets.GH_TOKEN }}  # ?????? secret
 
       - name: Setup Git
         run: |
@@ -34,6 +34,7 @@ jobs:
       - name: Install Bun dependencies
         run: |
           cd TypeScript
+          rm -f bun.lockb
           bun install
 
       - name: Setup Python
@@ -72,12 +73,12 @@ jobs:
       - name: Upload Response Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: network-responses-${{ github.run_id }}  # 唯一标识
+          name: network-responses-${{ github.run_id }}  # ????
           path: |
             Python/logs/
             TypeScript/logs/
             TypeScript/resp/
-          retention-days: 7  # 自动清理
+          retention-days: 7  # ????
 
       - name: Commit and push changes
         run: |
