@@ -50,7 +50,7 @@ export async function processHomeTimeline() {
                 count: 20
             });
             if (!resp?.data?.data || !Array.isArray(resp.data.data)) {
-                throw new Error("DATA_INVALID: 用户列表数据格式错误");
+                break;
             }
 
             // 提取有效用户数据
