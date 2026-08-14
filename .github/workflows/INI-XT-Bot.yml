@@ -1,7 +1,7 @@
 name: INI-XT-Bot
 
 on:
-  workflow_dispatch:      # 允许手动触发
+  workflow_dispatch:      # ??????
 
 jobs:
   auto-process:
@@ -32,6 +32,7 @@ jobs:
       - name: Install Bun dependencies
         run: |
           cd TypeScript
+          rm -f bun.lockb
           bun install
 
       - name: Setup Python
@@ -70,12 +71,12 @@ jobs:
       - name: Upload Response Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: network-responses-${{ github.run_id }}  # 唯一标识
+          name: network-responses-${{ github.run_id }}  # ????
           path: |
             Python/logs/
             TypeScript/logs/
             TypeScript/resp/
-          retention-days: 7  # 自动清理
+          retention-days: 7  # ????
 
       - name: Commit and push changes
         run: |
