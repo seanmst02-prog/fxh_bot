@@ -2,6 +2,8 @@ name: XT-Bot
 
 on:
   workflow_dispatch:      # ??????
+  schedule:
+    - cron: '0 2 * * *'  # UTC 02:00 = Beijing 10:00
 
 jobs:
   auto-process:
