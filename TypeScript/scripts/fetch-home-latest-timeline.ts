@@ -256,7 +256,7 @@ function processTweets(
         }
 
         // 过滤非关注用户
-        if (!followingIds.has(tweet.userIdStr)) {
+        if (followingIds.size > 0 && !followingIds.has(tweet.userIdStr)) {
             counter.nonFollowing++;
             return;
         }
